@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Book Club Meetings</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, Arial, sans-serif; margin: 0; background: #f4f1ea; color: #2b2b2b; }
+    header { background: #3b2f2f; color: #fff; padding: 18px 24px; }
+    header h1 { margin: 0; font-size: 1.4rem; }
+    header p { margin: 4px 0 0; opacity: .8; font-size: .9rem; }
+    main { max-width: 1100px; margin: 20px auto; padding: 0 16px; display: grid; gap: 20px; }
+    section { background: #fff; border-radius: 10px; padding: 18px; box-shadow: 0 1px 4px rgba(0,0,0,.1); }
+    h2 { margin-top: 0; font-size: 1.1rem; }
+    form { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+    label { display: flex; flex-direction: column; font-size: .85rem; gap: 4px; }
+    input, textarea { padding: 8px; border: 1px solid #bbb; border-radius: 6px; font: inherit; }
+    textarea { resize: vertical; min-height: 60px; }
+    .full { grid-column: 1 / -1; }
+    .actions { display: flex; gap: 8px; }
+    button { padding: 8px 14px; border: 0; border-radius: 6px; cursor: pointer; font: inherit; }
+    .primary { background: #8c5a2b; color: #fff; }
+    .secondary { background: #ddd; }
+    .edit { background: #2b6cb0; color: #fff; padding: 4px 10px; }
+    .del { background: #c0392b; color: #fff; padding: 4px 10px; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+    th, td { text-align: left; padding: 8px; border-bottom: 1px solid #e5e5e5; vertical-align: top; }
+    th { background: #efe8dc; }
+    #msg { min-height: 1.2em; font-size: .9rem; color: #2f6f3e; }
+    #msg.error { color: #c0392b; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Book Club Meeting Page</h1>
+    <p>Create, view, edit and delete book club meetings</p>
+  </header>
+
+  <main>
+    <section>
+      <h2 id="formTitle">Add a new meeting</h2>
+      <form id="meetingForm">
+        <input type="hidden" id="meetingId" />
+        <label>Book title *
+          <input id="book_title" required maxlength="200" />
+        </label>
+        <label>Author
+          <input id="author" maxlength="150" />
+        </label>
+        <label>Meeting date
+          <input id="meeting_date" type="date" />
+        </label>
+        <label>Location
+          <input id="location" maxlength="150" />
+        </label>
+        <label>Host name
+          <input id="host_name" maxlength="120" />
+        </label>
+        <label>Attendees
+          <input id="attendees" type="number" min="0" value="0" />
+        </label>
+        <label class="full">Discussion notes
+          <textarea id="discussion_notes"></textarea>
+        </label>
+        <div class="actions full">
+          <button type="submit" class="primary" id="saveBtn">Save meeting</button>
+          <button type="button" class="secondary" id="cancelBtn" hidden>Cancel edit</button>
+        </div>
+      </form>
+      <p id="msg"></p>
+    </section>
+
+    <section>
+      <h2>Meetings</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th><th>Book</th><th>Author</th><th>Date</th><th>Location</th>
+              <th>Host</th><th>Attendees</th><th>Notes</th><th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

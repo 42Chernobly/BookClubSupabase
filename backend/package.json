@@ -1,0 +1,20 @@
+{
+  "name": "book-club-crud",
+  "version": "1.0.0",
+  "description": "Question 8 - Book Club Meeting Page: CRUD with Node.js, Express and Supabase",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0",
+    "cors": "^2.8.6",
+    "dotenv": "^16.6.1",
+    "express": "^4.22.3",
+    "mysql2": "^3.24.6"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
